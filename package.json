@@ -11,9 +11,12 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
+    "https": "^1.0.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0"
+    "vue-router": "^4.0.0",
+    "vue3-google-login": "^2.0.12",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@quasar/app-webpack": "^3.0.0",
