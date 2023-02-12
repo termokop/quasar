@@ -1,5 +1,5 @@
 <template>
-  <div class="content" v-if="!isLessonOpened">
+  <div class="content">
       <h1 class='center'>Курс картвельської мови</h1> <br>
       <div class="studyMenu">
           <button class="element"
@@ -35,31 +35,9 @@
       </div>
   </div>
 
-  <!-- <div>
-    <router-link :to="{ name: 'vLesson', props: { lessonObj: {} } }">
-      Go to Target
-    </router-link>
-    <router-view />
-  </div> -->
-
-  <!-- <vLesson
-      v-if="isLessonOpened"
-      :lessonObj="lessonObj"
-      @backToMenu="isLessonOpened = false"
-      @start_quiz="start_quiz"
-      >
-  </vLesson> -->
-
-  <!-- <vLoader
-      :loader="loader"
-      >
-  </vLoader> -->
-
-
   </template>
 
   <script>
-  // import vLoader from './vLoader.vue';
   import vLesson from './vLesson.vue'
 
   export default {
@@ -75,22 +53,18 @@
           return {
                loader: false,
               lessonObj: null,
-              isLessonOpened: false,
               user_progress: [],
               language: 'ua',
           }
       },
       created() {
           let progresJSON = localStorage.getItem('course_1');
-          // console.log("progres_json",progresJSON)
           let arrOfProgress = Object.entries(JSON.parse(progresJSON))
           this.user_progress = arrOfProgress
-          // console.log(this.user_progress)
       },
       methods: {
           start_quiz(lesson) {
               this.practice(lesson)
-              this.isLessonOpened = false
           },
           startLesson(lesson) {
             this.$router.push({
@@ -117,7 +91,12 @@
                       throw new Error('not found any tasks')
                   }
                   this.$emit('start_quiz', result.task, show_hints,lesson)
-                  console.log(result.task)
+                  this.$q.localStorage.set("task",JSON.stringify(result.task))
+                  this.$q.localStorage.set("show_hints",JSON.stringify(show_hints))
+                  this.$q.localStorage.set("lesson", lesson)
+                  this.$router.push({
+                    path: '/quiz'
+                  })
               } catch (error) {
                   alert(error)
                   console.log(error)

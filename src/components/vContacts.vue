@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-      <p class="center">{{dictionaryModal.contacts.title[language]}}:</p>
-      <div :class="{logoBox:widthLogoBox}" class="center">
+      <p class="center">Контакти розробника:</p>
+      <div :class="logoBox" class="center">
           <a href="https://www.instagram.com/hruba.yurii/"  target="_blank"><img class="contacts" src="../assets/inst.svg" alt=""></a>
           <a href="https://t.me/termokop"  target="_blank"><img class="contacts" src="../assets/tl.svg" alt=""></a>
           <a href="https://www.facebook.com/termokop"  target="_blank"><img class="contacts" src="../assets/fb.svg" alt=""></a>
@@ -14,20 +14,8 @@
 
 <script>
 
-import dictionaryModal from 'src/helpers/dictionary/modals';
-
-
 export default {
   name: 'vContacts',
-  props: {
-      language: String,
-      widthLogoBox:String,
-  },
-  data() {
-      return {
-          dictionaryModal,
-      }
-  }
 }
 
 </script>

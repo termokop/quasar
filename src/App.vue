@@ -55,4 +55,13 @@ h2 {
   text-decoration: line-through;
 }
 
+.card {
+    width: 100%;
+    border-radius: 30px;
+    margin: 10px 0 0 0;
+}
+.pointer {
+  cursor: pointer;
+}
+
 </style>

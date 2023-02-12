@@ -188,13 +188,6 @@
   </script>
 
   <style lang="scss" scoped>
-
-  .card {
-    width: 100%;
-    border-radius: 30px;
-    margin: 10px 0 0 0;
-}
-
 .learn {
     width: 100%;
     display: flex;

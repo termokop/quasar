@@ -8,6 +8,13 @@ const routes = [
     ]
   },
   {
+    path: '/quiz',
+    component: () => import('src/layouts/QuizLayout.vue'),
+    children: [
+      { path: '', component: () => import('src/pages/quiz/vQuizPage.vue') },
+    ]
+  },
+  {
     path: '/',
     component: () => import('src/layouts/AppLayout.vue'),
     children: [
