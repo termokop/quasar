@@ -4,10 +4,16 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { useQuasar } from 'quasar'
 
 
 export default defineComponent({
   name: 'App',
+  created() {
+
+    const $q = useQuasar()
+    $q.dark.set(true)
+  }
 })
 </script>
 
