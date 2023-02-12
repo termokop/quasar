@@ -1,69 +1,105 @@
 <template>
-
   <div class="lesson" v-if="showContent">
-      <div  class="title">
-          <h2> Урок {{ lessonObj.lesson }}</h2>
-      </div>
 
-      <div class="intro">
-          <span v-html="lessonObj.info.intro"></span>
-      </div>
+    <q-card dark bordered class="bg-grey-9 card">
+        <q-card-section>
+              <div class="text-h5">Урок {{ lessonObj.lesson }}</div>
+              <!-- <div class="text-subtitle2">by John Doe</div> -->
+        </q-card-section>
 
-      <div v-if="lessonObj.letters.length > 0" class="letters">
-          <h2>Літери для вивчення:</h2>
-          <table>
-              <tr v-for="letter in lessonObj.letters" :key="letter.voice">
-                  <td><vPlayAudio :audioUrl="letter.voice"></vPlayAudio></td>
-                  <td class="ge">{{letter.ge}}</td>
-                  <td>-</td>
-                  <td class="ua">{{ letter.ua }}</td>
-              </tr>
-          </table>
-      </div>
+        <q-separator dark inset />
 
-      <div v-if="lessonObj.words.length > 0" class="words">
-          <h2>Слова для вивченя:</h2>
-          <table>
-              <tr v-for="word in lessonObj.words" :key="word.voice">
-                  <td><vPlayAudio :audioUrl="word.voice"></vPlayAudio></td>
-                  <td class="ge">{{ word.ge }}</td>
-                  <td>-</td>
-                  <td class="ua">{{ word.ua + ' ' +word.ua_additional }}</td>
-              </tr>
-          </table>
-      </div>
+        <q-card-section>
+              <div class="intro">
+                <span v-html="lessonObj.info.intro"></span>
+              </div>
+        </q-card-section>
 
-      <div v-if="lessonObj.sentences.length > 0" class="sentences">
-          <h2>Речення:</h2>
-            <table v-for="sentence in lessonObj.sentences" :key="sentence.voice">
-              <tr>
-                  <td rowspan="2"><vPlayAudio :audioUrl="sentence.voice"></vPlayAudio></td>
-                  <td class="ge">{{sentence.ge}}</td>
-              </tr>
-              <tr>
-                  <td class="ua">{{ sentence.ua }}</td>
-              </tr>
-          </table>
-      </div>
+        <q-card-section>
+              <q-card dark bordered class="bg-grey-9 card">
+                    <q-card-section>
+                          <div class="text-h6">До вивчення</div>
+                          <!-- <div class="text-subtitle2">by John Doe</div> -->
+                    </q-card-section>
+                    <q-separator dark inset />
+                    <q-card-section class="learn">
+                          <div v-if="lessonObj.letters.length > 0" class="letters">
+                              <h2>Літери для вивчення:</h2>
+                              <table>
+                                  <tr v-for="letter in lessonObj.letters" :key="letter.voice">
+                                      <td><vPlayAudio :audioUrl="letter.voice"></vPlayAudio></td>
+                                      <td class="ge">{{letter.ge}}</td>
+                                      <td>-</td>
+                                      <td class="ua">{{ letter.ua }}</td>
+                                  </tr>
+                              </table>
+                          </div>
+                          <div v-if="lessonObj.words.length > 0" class="words">
+                              <h2>Слова для вивченя:</h2>
+                              <table>
+                                  <tr v-for="word in lessonObj.words" :key="word.voice">
+                                      <td><vPlayAudio :audioUrl="word.voice"></vPlayAudio></td>
+                                      <td class="ge">{{ word.ge }}</td>
+                                      <td>-</td>
+                                      <td class="ua">{{ word.ua + ' ' +word.ua_additional }}</td>
+                                  </tr>
+                              </table>
+                          </div>
+                          <div v-if="lessonObj.sentences.length > 0" class="sentences">
+                              <h2>Речення:</h2>
+                                <table v-for="sentence in lessonObj.sentences" :key="sentence.voice">
+                                  <tr>
+                                      <td rowspan="2"><vPlayAudio :audioUrl="sentence.voice"></vPlayAudio></td>
+                                      <td class="ge">{{sentence.ge}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="ua">{{ sentence.ua }}</td>
+                                  </tr>
+                              </table>
+                          </div>
+                    </q-card-section>
+              </q-card>
+        </q-card-section>
 
-      <div class="gramar">
-          <h3>Граматика</h3>
-          <span v-html="lessonObj.info.gramar"></span>
-      </div>
+        <q-card-section>
+              <q-card dark bordered class="bg-grey-9 card">
+                    <q-card-section>
+                          <div class="text-h6">Граматика</div>
+                    </q-card-section>
+                    <q-separator dark inset />
+                    <q-card-section class="learn">
+                          <span v-html="lessonObj.info.gramar"></span>
+                    </q-card-section>
+              </q-card>
+        </q-card-section>
 
-      <div class="addictional" v-if="lessonObj.info.addictional">
-          <h3>Додатково:</h3>
-          <span v-html="lessonObj.info.addictional"></span>
-      </div>
+        <q-card-section v-if="lessonObj.info.addictional">
+              <q-card dark bordered class="bg-grey-9 card">
+                    <q-card-section>
+                          <div class="text-h6">Додаткова інформація</div>
+                    </q-card-section>
+                    <q-separator dark inset />
+                    <q-card-section class="learn">
+                        <span v-html="lessonObj.info.addictional"></span>
+                    </q-card-section>
+              </q-card>
+        </q-card-section>
 
-      <div class="buttons">
-        <q-btn to="/study" label="Повернутися до меню" push color="red" />
-        <q-btn label="Практикуватися" push color="green" @click.prevent="startQuiz"/>
-      </div>
+        <q-card-section>
+            <div class="buttons">
+                  <q-btn to="/study" label="Повернутися до меню" push color="red" />
+                  <q-btn label="Практикуватися" push color="green" @click.prevent="startQuiz"/>
+            </div>
 
-      <vDidUFindMistake
-          :objInfo="lessonObj">
-      </vDidUFindMistake>
+            <vDidUFindMistake
+                :objInfo="lessonObj">
+            </vDidUFindMistake>
+        </q-card-section>
+    </q-card>
+
+
+
+
 
   </div>
 
@@ -153,27 +189,24 @@
 
   <style lang="scss" scoped>
 
-      .lesson{
-          background-color: $lesson;
-          max-width: 100%;
-          margin: auto;
-          padding: 10px;
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          color: black;
-      }
-      .title, .gramar, .addictional, .intro, .buttons, .mistake {
-          width: 100%;
-      }
+  .card {
+    width: 100%;
+    border-radius: 30px;
+    margin: 10px 0 0 0;
+}
+
+.learn {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
       .letters, .sentences, .words {
           width: fit-content;
-          margin: 25px;
+          margin: 10px;
       }
-      h1, h2, h3{
-          width: fit-content;
-          margin: auto;
-      }
+
       .ua {
           color: $ua;
           font-style: italic;
@@ -200,7 +233,6 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
-          margin: 5px;
       }
 
   </style>
