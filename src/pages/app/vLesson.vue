@@ -225,14 +225,16 @@
           color: $ge;
           font-style: italic;
       }
-      .lesson :deep() h4,h2,h3,h1 {
+      .lesson :deep() h4,h2,h3 {
           width: fit-content;
           margin: auto;
+          font-size: 20px;
       }
       .buttons {
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
+          margin-bottom: 20px;
       }
 
   </style>
