@@ -72,7 +72,7 @@
               query: {lesson: lesson}
             })
           },
-          async startQuizz(key, show_hints, lesson=0) {
+          async startQuizz(key, show_hints, lesson='-') {
               this.loader = true
               const url = 'https://www.ukrge.site/api/get_task_for_course.php'
               const json = JSON.stringify({topic: key})
@@ -90,7 +90,6 @@
                   if (result.task.length < 1) {
                       throw new Error('not found any tasks')
                   }
-                  this.$emit('start_quiz', result.task, show_hints,lesson)
                   this.$q.localStorage.set("task",JSON.stringify(result.task))
                   this.$q.localStorage.set("show_hints",JSON.stringify(show_hints))
                   this.$q.localStorage.set("lesson", lesson)
@@ -99,7 +98,6 @@
                   })
               } catch (error) {
                   alert(error)
-                  console.log(error)
               } finally {
                   this.loader = false
               }
@@ -110,11 +108,6 @@
           exam(lesson) {
               this.startQuizz("lesson_" + lesson, false, lesson)
           }
-      },
-      updated() {
-          // let progresJSON = localStorage.getItem('course_1');
-          // let arrOfProgress = Object.entries(JSON.parse(progresJSON))
-          // this.user_progress = arrOfProgress
       },
   }
 

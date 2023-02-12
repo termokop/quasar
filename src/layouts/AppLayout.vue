@@ -39,7 +39,13 @@ export default {
       drawer: ref(false)
     }
   },
-  created() {
+  beforeCreate() {
+    const isAuth = this.$q.localStorage.getItem('jwt')
+    if(!isAuth) {
+      this.$router.replace({
+        path: '/auth'
+      })
+    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 
   <q-page>
-    <q-card class="card">
+    <q-card class="card" v-if="!loader">
       <q-card-section class="up-bar">
 
             <q-btn
@@ -61,6 +61,11 @@
     </q-card>
   </q-page>
 
+  <v-loader
+    :visible="loader">
+
+  </v-loader>
+
 </template>
 
 
@@ -69,6 +74,7 @@
 import vTask from '../../components/vTask.vue'
 import vScore from '../../components/vScore.vue'
 import vTaskSen from '../../components/vTaskSen.vue'
+import vLoader from 'src/components/vLoader.vue'
 
 export default {
     name: 'vQuizz',
@@ -76,6 +82,7 @@ export default {
         vTask,
         vScore,
         vTaskSen,
+        vLoader,
     },
     props: {
         // quiz: Array,
@@ -92,6 +99,7 @@ export default {
             language: 'ua',
             show_hints: JSON.parse(this.$q.localStorage.getItem('show_hints')),
             lesson: this.$q.localStorage.getItem('task'),
+            loader: true
         }
     },
     methods: {
@@ -108,24 +116,31 @@ export default {
           this.$q.localStorage.remove('task')
           this.$q.localStorage.remove('show_hints')
           this.$q.localStorage.remove('lesson')
-          this.$router.push({
+          this.$router.replace({
             path: '/'
           })
         },
     },
     computed: {
         progress () {
-            console.log(this.counter)
-            return ((this.counter + 1) /this.quiz.length)
+          if(!this.quiz?.length) return 0
+          return ((this.counter + 1) /this.quiz.length)
         }
     },
-    created() {
-      if(!this.$q.localStorage.has('task')) {
-        this.$router.push({
-          path: '/404'
+    beforeCreate() {
+      const isAuth = this.$q.localStorage.getItem('lesson')
+      if(!isAuth) {
+        this.$router.replace({
+          path: '/'
         })
       }
     },
+    mounted() {
+      setTimeout(() => {
+        this.loader = false
+      },500)
+    }
+
 }
 
 
