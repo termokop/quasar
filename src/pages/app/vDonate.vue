@@ -55,7 +55,7 @@
 
   <script>
   import dictionaryModal from 'src/helpers/dictionary/modals';
-  import { copyToClipboard, useQuasar } from 'quasar'
+  import { copyToClipboard } from 'quasar'
 
     export default {
       name: 'vAbout',
@@ -63,7 +63,6 @@
         return {
           language: 'ua',
           dictionaryModal,
-          $q : useQuasar()
         }
       },
       methods: {

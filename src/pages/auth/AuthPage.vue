@@ -22,7 +22,6 @@
 <script>
 import { defineComponent } from 'vue'
 import { GoogleLogin } from 'vue3-google-login'
-import { useQuasar } from 'quasar'
 import vHeader from 'src/components/vHeader.vue'
 
 export default defineComponent({
@@ -42,8 +41,7 @@ export default defineComponent({
     }
   },
   created() {
-    const $q = useQuasar()
-    $q.dark.set(true)
+    this.$q.dark.set(true)
   }
 })
 </script>

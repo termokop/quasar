@@ -86,7 +86,6 @@
 
 
 <script>
-import { useQuasar } from 'quasar';
 
 export default {
   name: 'vDrawer',
@@ -97,9 +96,8 @@ export default {
     }
   },
   created() {
-    const $q = useQuasar()
-    this.picture = $q.localStorage.getItem('picture')
-    this.name = JSON.parse($q.localStorage.getItem('userInfo')).name
+    this.picture = this.$q.localStorage.getItem('picture')
+    this.name = JSON.parse(this.$q.localStorage.getItem('userInfo')).name
   }
 }
 

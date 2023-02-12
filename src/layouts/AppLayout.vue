@@ -38,6 +38,8 @@ export default {
     return {
       drawer: ref(false)
     }
+  },
+  created() {
   }
 }
 </script>

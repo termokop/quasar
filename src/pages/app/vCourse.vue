@@ -35,6 +35,13 @@
       </div>
   </div>
 
+  <!-- <div>
+    <router-link :to="{ name: 'vLesson', props: { lessonObj: {} } }">
+      Go to Target
+    </router-link>
+    <router-view />
+  </div> -->
+
   <!-- <vLesson
       v-if="isLessonOpened"
       :lessonObj="lessonObj"
@@ -53,13 +60,13 @@
 
   <script>
   // import vLoader from './vLoader.vue';
-  // import vLesson from './vLesson.vue'
+  import vLesson from './vLesson.vue'
 
   export default {
       name: 'vCourse',
       components: {
           // vLoader,
-          // vLesson
+          vLesson
       },
       props: {
       },
@@ -69,43 +76,27 @@
                loader: false,
               lessonObj: null,
               isLessonOpened: false,
-              user_progress: [1,2,3,4,5,6,7],
+              user_progress: [],
               language: 'ua',
           }
       },
       created() {
           let progresJSON = localStorage.getItem('course_1');
-          console.log("progres_json",progresJSON)
+          // console.log("progres_json",progresJSON)
           let arrOfProgress = Object.entries(JSON.parse(progresJSON))
           this.user_progress = arrOfProgress
-          console.log(this.user_progress)
+          // console.log(this.user_progress)
       },
       methods: {
           start_quiz(lesson) {
               this.practice(lesson)
               this.isLessonOpened = false
           },
-          async startLesson(lesson) {
-              this.loader = true
-              const url = 'https://www.ukrge.site/api/get_lesson.php'
-              const json = JSON.stringify({lesson: lesson})
-
-              try {
-                  let response = await fetch(url, {
-                      method: 'POST',
-                      body: json
-                  })
-                  let result = await response.json()
-                  if(result.info) {
-                      this.lessonObj = result;
-                      this.isLessonOpened = true
-                  } else alert('Урок №' + lesson + ' ще в розробці')
-              } catch(error) {
-                  //console.log(error)
-                  alert('Щось пішло не так....')
-              } finally {
-              this.loader = false
-              }
+          startLesson(lesson) {
+            this.$router.push({
+              path: "/lesson",
+              query: {lesson: lesson}
+            })
           },
           async startQuizz(key, show_hints, lesson=0) {
               this.loader = true
