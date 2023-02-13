@@ -98,7 +98,7 @@ export default {
             quiz: JSON.parse(this.$q.localStorage.getItem('task')),
             language: 'ua',
             show_hints: JSON.parse(this.$q.localStorage.getItem('show_hints')),
-            lesson: this.$q.localStorage.getItem('task'),
+            lesson: this.$q.localStorage.getItem('lesson'),
             loader: true
         }
     },

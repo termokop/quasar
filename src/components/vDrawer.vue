@@ -61,6 +61,16 @@
         </q-item>
 
 
+        <q-item clickable v-ripple  @click="logout">
+          <q-item-section avatar>
+            <q-icon name="logout" />
+          </q-item-section>
+          <q-item-section>
+            Вихід
+          </q-item-section>
+        </q-item>
+
+
         <q-item>
           <q-item-section>
             <span class="q-mx-auto version"> Версія 1.0 </span>
@@ -87,12 +97,22 @@
 
 <script>
 
+import func from 'src/helpers/jsFunc'
+
 export default {
   name: 'vDrawer',
   data() {
     return {
       name: "",
       picture: "",
+    }
+  },
+  methods: {
+    logout() {
+      func.logout()
+      this.$router.replace({
+        path: '/auth'
+      })
     }
   },
   created() {
