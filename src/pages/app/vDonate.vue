@@ -90,16 +90,16 @@
 
           copyToClipboard(text)
             .then(() => {
-              this.$q.notify("Скопійовоно")
+              this.$q.notify({
+                type: "info",
+                message: "Скопійовоно",
+              })
             })
             .catch((e) => {
               console.log(e)
             })
         }
       },
-      created() {
-      }
-
 
     }
   </script>
