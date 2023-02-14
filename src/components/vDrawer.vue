@@ -33,7 +33,7 @@
 
       <q-item clickable v-ripple  to="/settings">
           <q-item-section avatar>
-            <q-icon name="book" />
+            <q-icon name="settings" />
           </q-item-section>
           <q-item-section>
             Налаштування профілю
