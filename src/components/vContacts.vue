@@ -26,10 +26,7 @@ export default {
 }
 
 .contacts {
-  width: 33%;
-}
-.logoBox {
-  width: 200px;
+  width: 100px;
 }
 
 </style>
