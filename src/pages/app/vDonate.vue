@@ -62,27 +62,48 @@
           <p class="text-body1">Зворотній зв'язок:</p>
           <p>Напишіть, що Вам конкретно подобається, або не подобається на даній платформі.</p>
           <p>Всі ми по різному сприймаємо інформацію, і якщо у Вас є ідеї, як зробити матеріал більш зрозумілим, для ширшого кола користувачів, пишіть нам. Ми відкриті новому.</p>
-          <div  class="center">
-            <q-btn to="/about" color="info"> Контакти розробника </q-btn>
+          <div class="center">
+            <q-btn
+                type="info"
+                color="primary"
+                label="Контакти розробника"
+                @click="contacts = true"
+              />
           </div>
         </q-card>
       </q-card-section>
     </q-card>
   </q-page>
 
+  <q-dialog v-model="contacts">
+    <q-card bordered class="card">
+      <q-card-section class="row items-center q-pb-none">
+        <div class="text-h6">Контакти розробника</div>
+        <q-space />
+        <q-btn icon="close" flat round dense v-close-popup />
+      </q-card-section>
+      <q-card-section>
+        <vContacts :language="language"></vContacts>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+
 
   </template>
 
   <script>
-  import dictionaryModal from 'src/helpers/dictionary/modals';
   import { copyToClipboard } from 'quasar'
+  import vContacts from 'src/components/vContacts.vue'
 
     export default {
       name: 'vAbout',
+      components: {
+        vContacts
+      },
       data() {
         return {
           language: 'ua',
-          dictionaryModal,
+          contacts: false
         }
       },
       methods: {

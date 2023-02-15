@@ -1,38 +1,45 @@
 <template>
   <q-page>
+    <q-card class="card">
+      <q-card-section>
+        <p class="center text-h6">Налаштування профілю</p>
+      </q-card-section>
+      <q-separator/>
+      <q-card-section class="q-pt-xl">
+        <div class="form">
+          <div class="group">
+                <input
+                  type="text"
+                  id="name"
+                  maxlength="20"
+                  required minlength="4"
+                  v-model="name" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Ім'я</label>
+          </div>
+          <div class="group">
+                <input
+                  type="text"
+                  id="nickname"
+                  maxlength="20"
+                  required
+                  v-model="nickname">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Нікнейм</label>
+          </div>
+          <div class="group">
+                <input type="text" id="about_yourself" v-model="about_yourself" required/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Про Вас</label>
+          </div>
+                 <input class="button" type="submit" value="Надіслати" @click.prevent="saveUserInfo" >
+        </div>
+      </q-card-section>
+    </q-card>
 
-    <h2>Налаштування профілю</h2>
-    <div class="form">
-      <div class="group">
-            <input
-              type="text"
-              id="name"
-              maxlength="20"
-              required minlength="4"
-              v-model="name" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Ім'я</label>
-      </div>
-      <div class="group">
-            <input
-              type="text"
-              id="nickname"
-              maxlength="20"
-              required
-              v-model="nickname">
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Нікнейм</label>
-      </div>
-      <div class="group">
-            <input type="text" id="about_yourself" v-model="about_yourself" required/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Про Вас</label>
-      </div>
-             <input class="button" type="submit" value="Надіслати" @click.prevent="saveUserInfo" >
-    </div>
 
 
 
