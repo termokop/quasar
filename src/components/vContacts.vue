@@ -1,10 +1,8 @@
 <template>
-  <div class="content">
-      <div class="center">
+  <div class="content center">
           <a href="https://www.instagram.com/hruba.yurii/"  target="_blank"><img class="contacts" src="../assets/inst.svg" alt=""></a>
           <a href="https://t.me/termokop"  target="_blank"><img class="contacts" src="../assets/tl.svg" alt=""></a>
           <a href="https://www.facebook.com/termokop"  target="_blank"><img class="contacts" src="../assets/fb.svg" alt=""></a>
-      </div>
   </div>
 </template>
 
@@ -18,11 +16,13 @@ export default {
 
 <style scoped>
 .content {
-  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .contacts {
-  width: 100px;
+  width: 70px;
 }
 
 </style>

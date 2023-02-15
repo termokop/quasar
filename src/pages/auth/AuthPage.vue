@@ -2,20 +2,21 @@
   <q-page>
       <vHeader></vHeader>
 
-      <div class="center">
-            <h1 class="section-title">Вивчайте <span class="strike"> <a href='https://civil.ge/archives/185960' style='color:#aaa; cursor:pointer'>грузинську</a></span> картвельську безкоштовно</h1>
-      </div>
-      <hr>
-      <div class="center">
-        <h2>
+      <div class="content">
+        <p class="text-h6">
+          Вивчайте <span class="strike"> <a href='https://civil.ge/archives/185960' style='color:#aaa; cursor:pointer'>грузинську</a></span> картвельську безкоштовно
+        </p>
+        <hr>
+        <p class="text-h6">
           Пароль не потрібен. Вхід за допомогою google-аккаунта:
-        </h2>
-      </div>
+        </p>
 
 
-      <div class="center">
-        <GoogleLogin :clientId=id :prompt='false' :callback="handleCredentialResponse"></GoogleLogin>
+        <div class="center">
+          <GoogleLogin :clientId=id :prompt='false' :callback="handleCredentialResponse"></GoogleLogin>
+        </div>
       </div>
+
     </q-page>
 </template>
 
@@ -106,6 +107,17 @@ export default defineComponent({
 
 hr {
   width: 50vw;
+}
+
+.content {
+  display: flex;
+  align-content: space-around;
+  flex-wrap: wrap;
+  height: 60vh;
+}
+p {
+  width: 100%;
+  text-align: center;
 }
 
 </style>

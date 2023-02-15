@@ -5,8 +5,8 @@
 
     </a>
 
-    <p class="title">
-        {{ dictionary[language] }}
+    <p class="center">
+        Борітеся — поборете!
     </p>
 
     <a href="#" class="logo right" @click.prevent="updateLang('ge')">
@@ -47,18 +47,17 @@ margin: 0;
 padding: 0;
 display: flex;
 justify-content: space-between;
+align-content: center;
 color: #ffffff;
-font-size: 16px;
 height: 80px;
 min-height: 80px;
-background-color: #1d1d1d;
+background-color: transparent;
 }
 .header a {
 float: left;
 color: black;
 text-align: center;
 height: fit-content;
-
 }
 
 img {
@@ -67,33 +66,6 @@ margin:0;
 border-radius: 10px;
 }
 
-.right {
-float: right;
-}
-
-p {
-text-shadow: 1px 1px 2px rgb(159, 159, 159), 0 0 1em rgb(0, 0, 0), 0 0 0.5em rgb(0, 0, 0);
-}
-
-.title {
-width: 100%;
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-}
-
-@media screen and (max-width: 600px) {
-.title {
-font-size: 15px;
-justify-content: center;
-
-}
-}
-@media screen and (max-width: 350px) {
-.title {
-    display: none;
-}
-}
 
 
 

@@ -2,7 +2,7 @@
 <q-card   dark bordered class=" card" v-if="task[0].type === 'words'">
 
         <q-card-section>
-          <p class="text-h6">{{dictionary.task[language]}}</p>
+          <p class="text-h6">Знайди відповідності</p>
         </q-card-section>
 
         <q-separator></q-separator>
@@ -20,7 +20,7 @@
                   <!-- ge------------------------------------------ -->
                   <q-btn
                       :disable="answered.includes(item.id)"
-                      class="word-item text-h6"
+                      class="word-item text-body2"
                       :class="{choosed: item.id === choosedWordGe, wrong: wrongAnsForAnimatGe === item.id}"
                       v-for="item in task"
                       :key="item.id"
@@ -32,7 +32,7 @@
                   <!-- ua----------------------------------------------- -->
                   <q-btn noCaps
                       :disable="answered.includes(item.id)"
-                      class="word-item text-h6"
+                      class="word-item text-body2"
                       :class="{choosed: item.id === choosedWordUa, wrong: wrongAnsForAnimatUa === item.id}"
                       v-for="item in sorted"
                       :key="item.id"
@@ -48,7 +48,7 @@
 
 
           <q-btn
-            :label="dictionary.button[language]"
+            label="Наступне"
             type="button"
             @click="nextTask"
             :disable="answered.length !== 4"
@@ -78,7 +78,6 @@ export default {
             type: Array,
             required: true
         },
-        // language: String,
     },
     data() {
         return {
@@ -176,7 +175,7 @@ export default {
 
     .word-item {
         display: flex;
-        width: 75%;
+        width: 90%;
         border: 3px solid #3d3d3d;
         border-radius: 10px;
         margin: auto;

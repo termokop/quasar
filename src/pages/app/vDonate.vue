@@ -49,7 +49,7 @@
               <td>BUSD, USDT:</td>
               <td>
                 <span class="copy" @click="copy('0xcaF909f67943bD712EE0a2275F740f27EB9c4ba4')">
-                  0xcaF909f67943bD712EE0a2275F740f27EB9c4ba4
+                  0xca...ba4
                   <span class="copy_icon">
                     <q-icon name="content_copy"/>
                   </span>
