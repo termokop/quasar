@@ -1,39 +1,49 @@
 <template>
-  <div class="content">
-      <h1 class='center'>Курс картвельської мови</h1> <br>
-      <div class="studyMenu">
-          <button class="element"
+  <q-page>
+    <q-card class="card">
+      <q-card-section>
+        <p class="center text-h6">Курс для початківців</p>
+      </q-card-section>
+      <q-separator size="2px" />
+      <q-card-section class="flex" style="justify-content: space-around;">
+            <q-card class="bg-primary text-white q-ma-sm"
               v-for="n in user_progress.length"
-              :key="n"
-              >
-              <p class="center">Урок {{ n }}</p>
-              <div class="buttons">
-                  <button
-                      @click.prevent="startLesson(n)"
-                      class="theory"
-                      >
-                      <img src="../../assets/theory.svg" alt="theory">
-                  </button>
-                  <button
-                      @click.prevent="practice(n)"
-                      class="practice"
-                      >
-                      <img src="../../assets/practice_lesson.svg" alt="practice">
-                  </button>
-                  <button
-                      @click.prevent="exam(n)"
-                      class="exam"
-                      >
-                      <img v-if="user_progress[n-1][1] === '10'" src="../../assets/doneA.svg" alt="doneExam">
-                      <img v-else-if="user_progress[n-1][1] >= '8.2'" src="../../assets/doneB.svg" alt="doneExam">
-                      <img v-else-if="user_progress[n-1][1] >= '7.5'" src="../../assets/doneC.svg" alt="doneExam">
-                      <img v-else-if="user_progress[n-1][1] >= '6'" src="../../assets/doneD.svg" alt="doneExam">
-                      <img v-else src="../../assets/doneX.svg" alt="doneExam">
-                  </button>
-              </div>
-          </button>
-      </div>
-  </div>
+              :key="n">
+              <q-card-section>
+                <div class="center text-h6">Урок {{ n }}</div>
+                <q-separator size="1px"/>
+                <div class="text-subtitle2">Короткий опис</div>
+              </q-card-section>
+              <q-card-actions>
+                <q-btn
+                  flat
+                  @click.prevent="startLesson(n)"
+                  >
+                  <img src="../../assets/theory.svg" alt="theory"/>
+                  Теорія
+                </q-btn>
+                <q-btn
+                  @click.prevent="practice(n)"
+                  flat>
+                  <img src="../../assets/practice_lesson.svg" alt="practice"/>
+                  Практика
+                </q-btn>
+                <q-btn
+                  @click.prevent="exam(n)"
+                  flat>
+                  <img v-if="user_progress[n-1][1] === '10'" src="../../assets/doneA.svg" alt="doneExam">
+                  <img v-else-if="user_progress[n-1][1] >= '8.2'" src="../../assets/doneB.svg" alt="doneExam">
+                  <img v-else-if="user_progress[n-1][1] >= '7.5'" src="../../assets/doneC.svg" alt="doneExam">
+                  <img v-else-if="user_progress[n-1][1] >= '6'" src="../../assets/doneD.svg" alt="doneExam">
+                  <img v-else src="../../assets/doneX.svg" alt="doneExam">
+                  Тест
+                </q-btn>
+              </q-card-actions>
+            </q-card>
+      </q-card-section>
+
+  </q-card>
+  </q-page>
 
   </template>
 
@@ -114,86 +124,13 @@
   </script>
 
   <style lang="scss" scoped>
-  h1 {
-      color: #fff;
-  }
-  .content {
-      padding-bottom: 90px;
-  }
-      .studyMenu {
-          display: flex;
-          width: 100%;
-          margin: auto;
-          flex-wrap: wrap;
-          justify-content: center;
-          background-color: transparent;
-          color: #fff;
-      }
 
-      .element {
-          position: relative;
-          width: 300px;
-          background: $element;
-          margin: 5px 5px;
-          border: 2px solid #2d2d2d;
-          border-width: 1px 3px 5px 3px;
-          padding: 5px;
-          border-radius: 10px;
-          color: #fff;
-          align-self: flex-start;
-          overflow:hidden;
-          height: 150px;
-      }
-      button.element:hover{
-          border-width: 3px 3px 3px 3px;
-      }
-
-      button[disabled] {
-          opacity: 50%;
-          background-color: gray;
-      }
-
-      p {
-          padding: 10px;
-      }
-
-
-      .buttons {
-          height: 70%;
-          display: flex;
-          justify-content: space-between;
-          align-content: center;
-
-      }
 
       button {
-          position: relative;
-          width: 30%;
-          height: 100%;
-          margin: auto;
-          background-color: transparent;
+          width: 80px;
       }
-      .buttons button:hover {
-          background: #2d2d2d;
-      }
-
       button img {
           width: 100%;
-      }
-        img.done {
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          width: 40%;
-      }
-      @media screen and (max-width: 500px) {
-          .studyMenu {
-          width: 95vw;
-      }
-      .element {
-          width: 90vh;
-
-      }
       }
 
 
