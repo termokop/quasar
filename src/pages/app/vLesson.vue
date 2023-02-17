@@ -1,7 +1,7 @@
 <template>
   <div class="lesson" v-if="showContent">
 
-    <q-card dark bordered class="bg-grey-9 card">
+    <q-card class="card1">
         <q-card-section>
               <div class="text-h5">Урок {{ lessonObj.lesson }}</div>
               <!-- <div class="text-subtitle2">by John Doe</div> -->
@@ -16,7 +16,7 @@
         </q-card-section>
 
         <q-card-section>
-              <q-card dark bordered class="bg-grey-9 card">
+              <q-card dark bordered class="card2">
                     <q-card-section>
                           <div class="text-h6">До вивчення</div>
                           <!-- <div class="text-subtitle2">by John Doe</div> -->
@@ -62,7 +62,7 @@
         </q-card-section>
 
         <q-card-section>
-              <q-card dark bordered class="bg-grey-9 card">
+              <q-card dark bordered class="card2">
                     <q-card-section>
                           <div class="text-h6">Граматика</div>
                     </q-card-section>
@@ -74,7 +74,7 @@
         </q-card-section>
 
         <q-card-section v-if="lessonObj.info.addictional">
-              <q-card dark bordered class="bg-grey-9 card">
+              <q-card dark bordered class="card2">
                     <q-card-section>
                           <div class="text-h6">Додаткова інформація</div>
                     </q-card-section>
@@ -188,6 +188,9 @@
   </script>
 
   <style lang="scss" scoped>
+  .lesson {
+    font-size: large;
+  }
 .learn {
     width: 100%;
     display: flex;
@@ -228,6 +231,15 @@
           flex-wrap: wrap;
           justify-content: space-around;
           margin-bottom: 20px;
+      }
+
+      .card1{
+        color: #000000;
+        background-color: rgba(240, 238, 177, 0.734);
+      }
+      .card2{
+        background-color: #324dc36c;
+        color: #000000;
       }
 
   </style>
