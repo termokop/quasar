@@ -40,6 +40,10 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/nova-scotia',
+    component: () => import('src/layouts/myNS.vue'),
+  },
 
   // Always leave this as last one,
   // but you can also remove it

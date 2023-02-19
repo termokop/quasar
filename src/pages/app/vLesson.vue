@@ -121,9 +121,6 @@
           vDidUFindMistake,
           vLoader,
       },
-      props: {
-
-      },
       // emits: ['start_quiz'],
       data() {
           return {
@@ -143,7 +140,7 @@
       },
       methods: {
           startQuiz() {
-            alert('Start Quizz!!!')
+            alert(this.lessonObj.lesson)
               // this.$emit('start_quiz', this.lessonObj.lesson)
           },
           async startLesson(lesson) {
@@ -221,10 +218,10 @@
           color: $ge;
           font-style: italic;
       }
-      .lesson :deep() h4,h2,h3 {
+      .lesson :deep() h3 {
           width: fit-content;
           margin: auto;
-          font-size: 20px;
+          font-size: x-large;
       }
       .buttons {
           display: flex;
@@ -240,6 +237,12 @@
       .card2{
         background-color: #324dc36c;
         color: #000000;
+      }
+      .lesson :deep() .tables {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
       }
 
   </style>
